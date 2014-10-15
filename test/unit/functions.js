@@ -1,18 +1,24 @@
-var test = require('tap').test,
-    functions = require(__dirname + '/../../lib/functions.js');
+'use strict';
+var assert = require("assert"),
+functions = require("../../lib/functions");
 
-var dimensions = [10, 20, 30];
-
-test('optimum', function(t) {
-	 for (var i in dimensions) {
-	     var x = [];
-	     for ( var j = 0; j < dimensions[i]; j++) {
-		 x.push(0);
-	     }
-	     t.equal( functions.ackley(x), 0, "Optimum for dimension "+ dimensions[i] + " OK" );
-     }
-	 t.end();
+suite('Functions', function() {
+    var dimensions = [10, 20, 30];
+	
+    for (var i in dimensions) {
+	test("Testing for dimension " + dimensions[i], function(){
+	    var x = [];
+	    for ( var j = 0; j < dimensions[i]; j++) {
+		x.push(0);
+	    }
+	    assert.equal( functions.ackley(x), 0, "Optimum for dimension "+ dimensions[i] + " OK" );
+	});
+    }
+    
 });
+
+
+/* 
 
 test("l-trap", function(t) {
 	 var a = 1,
@@ -67,3 +73,4 @@ function test_trap(t, params, subjects ) {
 }
 
 
+*/
